@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trang cá nhân - Hillary</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ==== MENU ==== -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">☰ Menu</div>
+      <ul class="nav-links" id="menu">
+        <li><a href="#home">Trang chủ</a></li>
+        <li><a href="#about">Giới thiệu cá nhân</a></li>
+        <li><a href="#projects">Dự án</a></li>
+        <li><a href="#weather">Thời tiết</a></li>
+        <li><a href="#currency">Chuyển đổi tiền tệ</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ul>
+      <div class="menu-icon" id="menu-toggle">☰</div>
+    </div>
+  </nav>
+
+  <script>
+    // --- MỞ / ĐÓNG MENU (Mobile) ---
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    toggle.addEventListener('click', () => menu.classList.toggle('active'));
+  </script>
+
+  <!-- ==== TRANG CHỦ ==== -->
+  <header class="hero" id="home">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>The Sweetest and Darkest Side</h1>
+      <a href="#about" class="btn">View More</a>
+    </div>
+  </header>
+
+  <!-- ==== CURRENCY CONVERTER ==== -->
+  <section class="currency" id="currency">
+    <div class="currency-container">
+      <h2>💱 Currency Converter</h2>
+      <p>Chuyển đổi tiền tệ theo tỷ giá thực tế (tự động cập nhật)</p>
+
+      <!-- Widget hiển thị tỷ giá USD → VND -->
+      <div class="exchange-widget">
+        <h3>💲 Tỷ giá USD → VND (Cập nhật tự động)</h3>
+        <p id="usd-vnd-rate">Đang tải tỷ giá...</p>
+        <button onclick="loadUsdVndRate()">🔄 Làm mới</button>
+      </div>
+
+      <!-- Bộ chuyển đổi -->
+      <div class="converter-box">
+        <input type="number" id="amount" placeholder="Nhập số tiền..." />
+        <select id="fromCurrency">
+          <option value="USD" selected>USD - Đô la Mỹ</option>
+          <option value="EUR">EUR - Euro</option>
+          <option value="JPY">JPY - Yên Nhật</option>
+          <option value="KRW">KRW - Won Hàn</option>
+          <option value="GBP">GBP - Bảng Anh</option>
+          <option value="CNY">CNY - Nhân dân tệ</option>
+          <option value="VND">VND - Việt Nam Đồng</option>
+        </select>
+
+        <span style="font-size: 20px; cursor: pointer;" onclick="swapCurrencies()">⇄</span>
+
+        <select id="toCurrency">
+          <option value="VND" selected>VND - Việt Nam Đồng</option>
+          <option value="USD">USD - Đô la Mỹ</option>
+          <option value="EUR">EUR - Euro</option>
+          <option value="JPY">JPY - Yên Nhật</option>
+          <option value="KRW">KRW - Won Hàn</option>
+          <option value="GBP">GBP - Bảng Anh</option>
+          <option value="CNY">CNY - Nhân dân tệ</option>
+        </select>
+
+        <button onclick="convertCurrency()">Chuyển đổi</button>
+      </div>
+
+      <div id="result" class="result"></div>
+    </div>
+  </section>
+
+  <!-- ==== GIỚI THIỆU ==== -->
+  <section id="about" class="section">
+    <h2>Chào mừng đến với trang web cá nhân của tôi!</h2>
+    <p>Tôi là sinh viên ngành Vật lý Tin học, đam mê lập trình nhúng, IoT, và phát triển hệ thống tự động.</p>
+    <h3>Giới thiệu</h3>
+    <ul>
+      <li>IoT & Tự động hóa</li>
+      <li>Xử lý tín hiệu số (EEG, ECG)</li>
+      <li>Lập trình vi điều khiển (PIC, ESP32)</li>
+      <li>Phát triển web và giao diện điều khiển Node-RED Dashboard</li>
+      <li>Phân tích dữ liệu</li>
+    </ul>
+  </section>
+
+  <!-- ==== DỰ ÁN ==== -->
+  <section id="projects" class="section">
+    <h2>Dự án nổi bật</h2>
+    <p>📡 <b>Phân tích dữ liệu dân số các thành phố</b> – Giám sát dữ liệu dân số, mật độ giới tính, độ tuổi.</p>
+    <p>🌡️ <b>Đồng hồ đo nhiệt độ & cảnh báo bằng PIC16F877A</b> – Lưu log nhiệt độ, cảnh báo vượt ngưỡng.</p>
+    <p>🚰 <b>Hệ thống bơm nước IoT</b> – Điều khiển bơm từ xa qua Internet, theo dõi dữ liệu mực nước.</p>
+  </section>
+
+  <!-- ==== THỜI TIẾT ==== -->
+  <section id="weather" class="section">
+    <h2>🌤️ Dự báo thời tiết (TP.HCM)</h2>
+    <div id="weather-container" class="weather-container">Đang tải dữ liệu...</div>
+  </section>
+
+  <!-- ==== LIÊN HỆ ==== -->
+  <section id="contact" class="section">
+    <h2>Liên hệ</h2>
+    <p>Email: <a href="mailto:luongmy039@gmail.com">luongmy039@gmail.com</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Hillary — All Rights Reserved</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
